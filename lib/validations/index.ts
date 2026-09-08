@@ -158,6 +158,19 @@ export const inventoryLogSchema = z.object({
 
 export type InventoryLogInput = z.infer<typeof inventoryLogSchema>
 
+// ─── Product Demo ─────────────────────────────────────────────────────────────
+
+export const productDemoSchema = z.object({
+  title:        z.string().min(2, 'Title required'),
+  videoUrl:     assetUrlSchema,
+  posterUrl:    assetUrlSchema.optional().or(z.literal('')),
+  collectionId: z.string().cuid('Choose a collection'),
+  sortOrder:    z.number().int().default(0),
+  isActive:     z.boolean().default(true),
+})
+
+export type ProductDemoInput = z.infer<typeof productDemoSchema>
+
 // ─── API response helpers ─────────────────────────────────────────────────────
 
 export function ok<T>(data: T, status = 200) {

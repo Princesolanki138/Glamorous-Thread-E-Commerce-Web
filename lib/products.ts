@@ -192,6 +192,44 @@ export const getBestSellers = unstable_cache(
   { revalidate: 60, tags: ['products'] },
 )
 
+export type StorefrontDemo = {
+  id: string
+  title: string
+  videoUrl: string
+  posterUrl: string | null
+  collectionSlug: string
+}
+
+/**
+ * Homepage "Product Demo" carousel. Only active demos whose collection is also
+ * active, so hiding a collection hides its clips too.
+ */
+export const getProductDemos = unstable_cache(
+  async (): Promise<StorefrontDemo[]> => {
+    const demos = await prisma.productDemo.findMany({
+      where: { isActive: true, collection: { isActive: true } },
+      orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
+      select: {
+        id: true,
+        title: true,
+        videoUrl: true,
+        posterUrl: true,
+        collection: { select: { slug: true } },
+      },
+    })
+
+    return demos.map((d) => ({
+      id: d.id,
+      title: d.title,
+      videoUrl: d.videoUrl,
+      posterUrl: d.posterUrl,
+      collectionSlug: d.collection.slug,
+    }))
+  },
+  ['storefront-product-demos'],
+  { revalidate: 60, tags: ['product-demos'] },
+)
+
 /**
  * Product page "You May Also Like".
  * Prefers other products in the same collection, then tops up from the rest of

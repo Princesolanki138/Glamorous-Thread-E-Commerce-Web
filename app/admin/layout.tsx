@@ -8,6 +8,7 @@ const navigation = [
   { name: 'Dashboard',          href: '/admin/dashboard' },
   { name: 'Products',           href: '/admin/products' },
   { name: 'Collections',        href: '/admin/categories' },
+  { name: 'Product Demos',      href: '/admin/demos' },
   { name: 'Orders',             href: '/admin/orders' },
   { name: 'Customers',          href: '/admin/customers' },
   { name: 'Leads (CRM)',        href: '/admin/leads' },

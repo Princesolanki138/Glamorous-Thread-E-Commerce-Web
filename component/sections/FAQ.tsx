@@ -124,7 +124,7 @@ export const FAQ: React.FC = () => {
         >
           <p className="text-[#8A8A8A] mb-6 font-inter text-sm">Still have questions? We&apos;re here to help.</p>
           <a
-            href="https://wa.me/919625707865?text=Hi%20Glamorous%20Thread!%20I%20have%20a%20question."
+            href="https://wa.me/918104834173?text=Hi%20Glamorous%20Thread!%20I%20have%20a%20question."
             target="_blank"
             rel="noreferrer"
             className="luxury-button-outline"

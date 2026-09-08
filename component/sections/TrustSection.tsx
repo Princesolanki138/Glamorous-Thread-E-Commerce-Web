@@ -65,17 +65,8 @@ export const TrustSection: React.FC = () => {
   return (
     <section ref={sectionRef} className="relative py-28 overflow-hidden">
 
-      {/* Video background */}
-      <video
-        autoPlay muted loop playsInline preload="none"
-        className="absolute inset-0 w-full h-full object-cover"
-        aria-hidden="true"
-      >
-        <source src="/hair-demo.mp4" type="video/mp4" />
-      </video>
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-[#121212]/78 backdrop-blur-[3px]" />
+      {/* Theme background — mirrors the palette's dark gradient (#1A1A1A → #121212) */}
+      <div className="absolute inset-0 bg-linear-to-b from-[#1A1A1A] to-[#121212]" />
 
       {/* Noise texture overlay for depth */}
       <div className="absolute inset-0 opacity-[0.03]"
@@ -100,7 +91,7 @@ export const TrustSection: React.FC = () => {
           {trustPoints.map((point, i) => (
             <div
               key={i}
-              className="ts-card bg-white/6 backdrop-blur-md border border-white/10 rounded-2xl p-7 text-center hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1"
+              className="ts-card bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl p-7 text-center hover:bg-[#1F1F1F] hover:border-[#D4D4D4]/25 transition-all duration-300 hover:-translate-y-1"
               style={{ opacity: 0 }}
             >
               <div className="w-12 h-12 rounded-xl bg-[#D4D4D4]/10 border border-[#D4D4D4]/20 flex items-center justify-center mx-auto mb-5">

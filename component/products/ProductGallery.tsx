@@ -27,7 +27,7 @@ export default function ProductGallery({
     images = [product.image]
   }
 
-  const [selectedImage, setSelectedImage] = useState(images[0] || '/images/placeholder.jpg')
+  const [selectedImage, setSelectedImage] = useState(images[0] || '/images/placeholder.png')
   const currentIndex = Math.max(0, images.indexOf(selectedImage))
 
   const handleNext = () => {

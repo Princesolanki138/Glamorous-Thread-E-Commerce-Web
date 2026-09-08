@@ -13,6 +13,10 @@ export default function Page() {
       label="Our Brand"
       intro="Glamorous Thread creates premium 100% human hair wigs, extensions and toppers for women across India."
     >
+      <Section heading="Glamorous Thread Hair Extension And Wig Studio">
+        <p>Established as a Proprietor firm in the year 2008, we &ldquo;Glamorous Thread Hair Extension And Wig Studio&rdquo; are a leading Manufacturer of a wide range of Human Hair Wig, Human Hair Extension, Human Hair, etc.</p>
+      </Section>
+
       <Section heading="Our Story">
         <p>Glamorous Thread began with a simple observation: too many women were offered hair that looked artificial, felt uncomfortable, and could not be worn every day with confidence.</p>
         <p>We set out to change that by sourcing genuine 100% human hair and finishing every piece to a standard we would happily wear ourselves. What began as a small, quality-obsessed operation now serves more than 200,000 women nationwide.</p>

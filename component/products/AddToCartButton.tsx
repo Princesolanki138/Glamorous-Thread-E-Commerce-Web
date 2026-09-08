@@ -134,7 +134,7 @@ export default function AddToCartButton({
 
     product.images?.[0] ||
 
-    '/images/placeholder.jpg'
+    '/images/placeholder.png'
 
   //
   // VALIDATION

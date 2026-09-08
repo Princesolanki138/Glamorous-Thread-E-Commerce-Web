@@ -40,7 +40,7 @@ export default function ProductCard({ product }: { product: any }) {
         {/* Image */}
         <div className="relative aspect-[3/4] overflow-hidden">
           <Image
-            src={product.image || product.images?.[0]?.url || '/placeholder.jpg'}
+            src={product.image || product.images?.[0]?.url || '/images/placeholder.png'}
             alt={product.title}
             fill
             sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 30vw"
@@ -74,7 +74,7 @@ export default function ProductCard({ product }: { product: any }) {
             {product.badge && (
               <span className="luxury-badge text-[0.6rem]">{product.badge}</span>
             )}
-            {discount && discount > 0 && (
+            {discount !== null && discount > 0 && (
               <span className="luxury-badge text-[0.6rem] border-[#D4D4D4]/30 text-[#D4D4D4]">
                 -{discount}%
               </span>
@@ -103,7 +103,7 @@ export default function ProductCard({ product }: { product: any }) {
                 </span>
               )}
             </div>
-            {product.reviews && (
+            {product.reviews > 0 && (
               <div className="flex items-center gap-1">
                 <span className="text-[#D4D4D4] text-xs">★</span>
                 <span className="text-[#8A8A8A] text-xs font-inter">({product.reviews})</span>

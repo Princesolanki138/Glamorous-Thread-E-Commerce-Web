@@ -46,7 +46,7 @@ export default function StickyCartBar({ product }: any) {
       variantId: selectedVariant.id,
       title: product.title,
       price: selectedVariant.price ?? product.price,
-      image: product.image || product.images?.[0] || '/images/placeholder.jpg',
+      image: product.image || product.images?.[0] || '/images/placeholder.png',
       quantity,
       color: selectedColor,
       texture: selectedTexture,
@@ -71,7 +71,7 @@ export default function StickyCartBar({ product }: any) {
             <div className="flex items-center gap-4 min-w-0 flex-1">
               <div className="relative w-16 h-16 md:w-19 md:h-19 rounded-xl overflow-hidden bg-[#1A1A1A] border border-[#2A2A2A] shrink-0">
                 <Image
-                  src={product.image || product.images?.[0] || '/images/placeholder.jpg'}
+                  src={product.image || product.images?.[0] || '/images/placeholder.png'}
                   alt={product.title}
                   fill
                   className="object-cover"
