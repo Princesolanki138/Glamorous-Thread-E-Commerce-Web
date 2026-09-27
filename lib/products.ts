@@ -206,17 +206,27 @@ export type StorefrontDemo = {
  */
 export const getProductDemos = unstable_cache(
   async (): Promise<StorefrontDemo[]> => {
-    const demos = await prisma.productDemo.findMany({
-      where: { isActive: true, collection: { isActive: true } },
-      orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
-      select: {
-        id: true,
-        title: true,
-        videoUrl: true,
-        posterUrl: true,
-        collection: { select: { slug: true } },
-      },
-    })
+    // The ProductDemo table is a recent schema addition that may not exist yet
+    // on every database this app connects to (e.g. before the schema has been
+    // pushed). Fail soft so a missing table degrades to "no demos" instead of
+    // taking down the homepage render.
+    let demos
+    try {
+      demos = await prisma.productDemo.findMany({
+        where: { isActive: true, collection: { isActive: true } },
+        orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
+        select: {
+          id: true,
+          title: true,
+          videoUrl: true,
+          posterUrl: true,
+          collection: { select: { slug: true } },
+        },
+      })
+    } catch (error) {
+      console.error('getProductDemos: falling back to empty list', error)
+      return []
+    }
 
     return demos.map((d) => ({
       id: d.id,
