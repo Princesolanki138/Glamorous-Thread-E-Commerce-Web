@@ -1,3 +1,4 @@
+import 'server-only'
 import { sendWhatsAppTemplate, toWhatsAppPhone, type SendTemplateResult } from './cloudApi'
 
 const OTP_TEMPLATE = process.env.WHATSAPP_OTP_TEMPLATE_NAME

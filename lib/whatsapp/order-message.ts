@@ -1,4 +1,5 @@
-const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER ?? '918104834173'
+const WHATSAPP_NUMBER =
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918104834173'
 
 const DIV = '━━━━━━━━━━━━━━━'
 

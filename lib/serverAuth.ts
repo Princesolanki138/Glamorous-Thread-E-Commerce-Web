@@ -1,3 +1,4 @@
+import 'server-only'
 import { NextResponse } from 'next/server'
 import { prisma } from './prisma'
 import { getSession } from './auth/session'

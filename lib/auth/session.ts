@@ -1,3 +1,4 @@
+import 'server-only'
 import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { SESSION_MAX_AGE_SECONDS, signSessionToken, verifySessionToken, type SessionPayload } from './jwt'

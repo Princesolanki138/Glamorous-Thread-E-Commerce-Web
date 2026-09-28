@@ -1,3 +1,4 @@
+import 'server-only'
 import { createHmac, timingSafeEqual, randomInt } from 'crypto'
 
 export const OTP_LENGTH = 6

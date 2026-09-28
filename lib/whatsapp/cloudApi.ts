@@ -1,3 +1,5 @@
+import 'server-only'
+
 const ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN
 const PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID
 const API_VERSION = process.env.WHATSAPP_API_VERSION || 'v21.0'

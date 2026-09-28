@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { MessageCircle, Loader2 } from 'lucide-react'
-import { buildWhatsAppMessage, buildWhatsAppUrl } from '@/lib/whatsapp'
+import { buildWhatsAppMessage, buildWhatsAppUrl } from '@/lib/whatsapp/order-message'
 
 const ORDER_STATUSES = [
   'PENDING', 'WHATSAPP_SENT', 'CONFIRMED', 'PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELLED',
