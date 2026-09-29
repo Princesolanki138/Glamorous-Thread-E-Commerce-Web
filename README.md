@@ -205,8 +205,8 @@ JWT_SECRET                # random, 32+ chars — signs sessions and hashes OTPs
 
 **Recommended**
 ```
-MINIMOTH_API_KEY          # OTP delivery (WhatsApp first, SMS fallback)
-MINIMOTH_BASE_URL         # https://api.minimoth.dev/v1
+MINIMOTH_API_KEY          
+MINIMOTH_BASE_URL         
 CLOUDINARY_URL
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET

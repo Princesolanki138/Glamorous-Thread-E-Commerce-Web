@@ -114,12 +114,12 @@ Delivers the 6-digit login codes. It tries WhatsApp first and falls back to SMS 
 
 **Getting the values**
 
-1. Sign up at **[app.minimoth.dev](https://app.minimoth.dev)**
+1. Sign up at **[app.minimoth.dev]
 2. Create a project and copy its API key (it looks like `mm_live_…` or `mm_test_…`)
 
 ```env
-MINIMOTH_API_KEY=mm_live_xxxxxxxxxxxx
-MINIMOTH_BASE_URL=https://api.minimoth.dev/v1
+MINIMOTH_API_KEY=
+MINIMOTH_BASE_URL=
 ```
 
 Leave `MINIMOTH_BASE_URL` exactly as shown.
@@ -145,7 +145,7 @@ Hosts product photos. Uploads go straight from the admin's browser to Cloudinary
    - Save, then copy the preset name → `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET`
 
 ```env
-CLOUDINARY_URL=cloudinary://123456789:abcdefg@your-cloud-name
+CLOUDINARY_URL=cloudinary
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your-cloud-name
 NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your-preset-name
 ```
@@ -172,9 +172,9 @@ Sends the automated order and payment messages. **Orders still work without this
 > The token shown on the API Setup page is temporary (24 hours). For production, create a **System User** in Business Settings and generate a **permanent** token, or messages will silently stop working after a day.
 
 ```env
-WHATSAPP_ACCESS_TOKEN=EAAxxxxxxxxxxxx
-WHATSAPP_PHONE_NUMBER_ID=123456789012345
-WHATSAPP_BUSINESS_ACCOUNT_ID=123456789012345
+WHATSAPP_ACCESS_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_BUSINESS_ACCOUNT_ID=
 WHATSAPP_API_VERSION=v21.0
 ```
 
@@ -187,8 +187,8 @@ WHATSAPP_API_VERSION=v21.0
 | `WHATSAPP_OTP_TEMPLATE_NAME` | **Authentication** | the code |
 
 ```env
-WHATSAPP_PAYMENT_TEMPLATE_NAME=payment_request
-WHATSAPP_PAYMENT_SUCCESS_TEMPLATE_NAME=payment_success
+WHATSAPP_PAYMENT_TEMPLATE_NAME=
+WHATSAPP_PAYMENT_SUCCESS_TEMPLATE_NAME=
 WHATSAPP_OTP_TEMPLATE_NAME=login_code
 WHATSAPP_OTP_TEMPLATE_HAS_BUTTON=true
 ```
@@ -419,11 +419,7 @@ Prefer `session.userId` when you only need the id — it avoids a query.
 
 **MiniMoth API** (verified against the live service — it differs from what's commonly assumed):
 
-```
-POST https://api.minimoth.dev/v1/otp/send     { "phone": "+919876543210" }
-POST https://api.minimoth.dev/v1/otp/verify   { "phone": "+91…", "code": "123456" }
-Header: X-Api-Key: <key>        ← not Authorization: Bearer
-```
+
 
 Routes live under `/v1`, there's no `channel` parameter (WhatsApp-then-SMS is decided server-side), and verify takes `code`, not `otp`. MiniMoth returns its own tokens; we ignore them and mint our own session, which their docs explicitly support.
 
