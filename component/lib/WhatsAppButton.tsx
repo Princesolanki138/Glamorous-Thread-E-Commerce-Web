@@ -3,7 +3,6 @@
 import React from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 
-const DEFAULT_WHATSAPP_NUMBER = '918104834173'
 
 function encodeWhatsAppText(text: string) {
   return encodeURIComponent(text)
@@ -26,7 +25,10 @@ export default function WhatsAppButton({
   ariaLabel,
   className,
 }: WhatsAppButtonProps) {
-  const number = phoneNumber ?? process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? DEFAULT_WHATSAPP_NUMBER
+  const number = phoneNumber ?? process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
+
+  // Don't render if no phone number is configured
+  if (!number) return null
 
   const text = message ?? 'Hi Glamorous Thread, I need help.'
   const href = `https://wa.me/${number}?text=${encodeWhatsAppText(text)}`

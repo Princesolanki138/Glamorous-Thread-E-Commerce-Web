@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server'
 import { getSession } from '@/lib/auth/session'
 import { prisma } from '@/lib/prisma'
 import { whatsappOrderSchema, ok, err, validationErr } from '@/lib/validations'
-import { buildWhatsAppMessage, buildWhatsAppUrl, generateOrderNumber } from '@/lib/whatsapp'
+import { buildWhatsAppMessage, buildWhatsAppUrl, generateOrderNumber } from '@/lib/whatsapp/server'
 import { createAuditLog } from '@/lib/audit'
 import { validateCoupon, claimCouponUse } from '@/lib/coupons'
 

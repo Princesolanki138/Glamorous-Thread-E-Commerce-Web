@@ -1,6 +1,6 @@
 import 'server-only'
 import { prisma } from '@/lib/prisma'
-import { sendOtpViaWhatsApp } from '@/lib/whatsapp'
+import { sendOtpViaWhatsApp } from '@/lib/whatsapp/server'
 import {
   generateOtp,
   hashOtp,

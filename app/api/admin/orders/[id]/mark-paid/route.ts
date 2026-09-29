@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { ensureAdmin } from '@/lib/serverAuth'
 import { createAuditLog } from '@/lib/audit'
 import { ok, err, validationErr } from '@/lib/validations'
-import { sendWhatsAppTemplate, paymentSuccessTemplateParams, toWhatsAppPhone } from '@/lib/whatsapp'
+import { sendWhatsAppTemplate, paymentSuccessTemplateParams, toWhatsAppPhone } from '@/lib/whatsapp/server'
 
 const PAYMENT_SUCCESS_TEMPLATE = process.env.WHATSAPP_PAYMENT_SUCCESS_TEMPLATE_NAME
 

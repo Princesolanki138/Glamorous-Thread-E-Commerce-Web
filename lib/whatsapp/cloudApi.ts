@@ -1,8 +1,13 @@
 import 'server-only'
 
-const ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN
-const PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID
-const API_VERSION = process.env.WHATSAPP_API_VERSION || 'v21.0'
+/** Reads WhatsApp Cloud API config at call time, not at import time. */
+function waConfig() {
+  return {
+    accessToken: process.env.WHATSAPP_ACCESS_TOKEN,
+    phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
+    apiVersion: process.env.WHATSAPP_API_VERSION || 'v21.0',
+  }
+}
 
 /** Normalizes a stored 10-digit Indian phone number into the E.164-ish form the WhatsApp API expects. */
 export function toWhatsAppPhone(phone: string) {
@@ -27,7 +32,8 @@ export type SendTemplateResult =
  * order/payment operation, so failures are returned, not raised.
  */
 export async function sendWhatsAppTemplate(params: SendTemplateParams): Promise<SendTemplateResult> {
-  if (!ACCESS_TOKEN || !PHONE_NUMBER_ID) {
+  const { accessToken, phoneNumberId, apiVersion } = waConfig()
+  if (!accessToken || !phoneNumberId) {
     return { success: false, error: 'WhatsApp Business API is not configured (missing WHATSAPP_ACCESS_TOKEN / WHATSAPP_PHONE_NUMBER_ID).' }
   }
 
@@ -48,10 +54,10 @@ export async function sendWhatsAppTemplate(params: SendTemplateParams): Promise<
   }
 
   try {
-    const res = await fetch(`https://graph.facebook.com/${API_VERSION}/${PHONE_NUMBER_ID}/messages`, {
+    const res = await fetch(`https://graph.facebook.com/${apiVersion}/${phoneNumberId}/messages`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
